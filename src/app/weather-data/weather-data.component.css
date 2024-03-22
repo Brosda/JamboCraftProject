@@ -1,0 +1,25 @@
+.weather {
+  background: var(--accent-color);
+  border-radius: 30px;
+  padding-bottom: 30px;
+}
+.weather-heading {
+  color: var(--primary-color);
+  padding: 10px 20px 0 20px;
+}
+.weather-location {
+  padding: 10px 20px 20px 20px;
+}
+.weather-location::before {
+  content: url("/assets/location-pin.svg") / "";
+}
+
+section.weather a {
+  padding-left: 20px;
+  text-decoration: none;
+  color: var(--primary-color);
+}
+section.weather a::after {
+  content: "\203A";
+  margin-left: 5px;
+}
