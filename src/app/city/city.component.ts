@@ -16,7 +16,7 @@ import { City } from '../city';
 
     <section class="details">
       <h2 class="details-heading">{{ currentCity?.viewValue }}</h2>
-      <p class="details-location">{{ currentCity?.details}}</p>
+      <p class="details-description">{{ currentCity?.details}}</p>
     </section>
     <section class="weather">
       <city-weather></city-weather>
@@ -26,14 +26,6 @@ import { City } from '../city';
 })
 
 export class CityComponent {
+  @Input() currentCity!: City | undefined
 
-  @Input() currentValue!: string
-
-  currentCity: City | undefined;
-
-  cityService: CitiesService = inject(CitiesService);
-
-  constructor() {
-    this.currentCity = this.cityService.getCityByValue(this.currentValue);
-  }
 }

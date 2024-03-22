@@ -41,22 +41,24 @@ import {
   _getOptionScrollPosition,
   _isTestEnvironment,
   addAriaReferencedId,
-  animate,
-  animateChild,
   coerceArray,
   coerceCssPixelValue,
   coerceElement,
   coerceNumberProperty,
   getRtlScrollAxisType,
   hasModifierKey,
-  query,
   removeAriaReferencedId,
+  supportsScrollBehavior
+} from "./chunk-WD7KHFGC.js";
+import {
+  animate,
+  animateChild,
+  query,
   state,
   style,
-  supportsScrollBehavior,
   transition,
   trigger
-} from "./chunk-55ZBX2QP.js";
+} from "./chunk-ONEXM5KX.js";
 import {
   CommonModule,
   DOCUMENT,

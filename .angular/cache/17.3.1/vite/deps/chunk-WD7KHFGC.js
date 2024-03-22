@@ -1,4 +1,11 @@
 import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger
+} from "./chunk-ONEXM5KX.js";
+import {
   CommonModule,
   DOCUMENT,
   NgTemplateOutlet,
@@ -31,8 +38,6 @@ import {
   Output,
   PLATFORM_ID,
   QueryList,
-  RendererFactory2,
-  RuntimeError,
   Subject,
   Subscription,
   Version,
@@ -598,242 +603,6 @@ function coerceElement(elementOrRef) {
   return elementOrRef instanceof ElementRef ? elementOrRef.nativeElement : elementOrRef;
 }
 
-// node_modules/@angular/animations/fesm2022/animations.mjs
-var AnimationMetadataType;
-(function(AnimationMetadataType2) {
-  AnimationMetadataType2[AnimationMetadataType2["State"] = 0] = "State";
-  AnimationMetadataType2[AnimationMetadataType2["Transition"] = 1] = "Transition";
-  AnimationMetadataType2[AnimationMetadataType2["Sequence"] = 2] = "Sequence";
-  AnimationMetadataType2[AnimationMetadataType2["Group"] = 3] = "Group";
-  AnimationMetadataType2[AnimationMetadataType2["Animate"] = 4] = "Animate";
-  AnimationMetadataType2[AnimationMetadataType2["Keyframes"] = 5] = "Keyframes";
-  AnimationMetadataType2[AnimationMetadataType2["Style"] = 6] = "Style";
-  AnimationMetadataType2[AnimationMetadataType2["Trigger"] = 7] = "Trigger";
-  AnimationMetadataType2[AnimationMetadataType2["Reference"] = 8] = "Reference";
-  AnimationMetadataType2[AnimationMetadataType2["AnimateChild"] = 9] = "AnimateChild";
-  AnimationMetadataType2[AnimationMetadataType2["AnimateRef"] = 10] = "AnimateRef";
-  AnimationMetadataType2[AnimationMetadataType2["Query"] = 11] = "Query";
-  AnimationMetadataType2[AnimationMetadataType2["Stagger"] = 12] = "Stagger";
-})(AnimationMetadataType || (AnimationMetadataType = {}));
-function trigger(name, definitions) {
-  return {
-    type: AnimationMetadataType.Trigger,
-    name,
-    definitions,
-    options: {}
-  };
-}
-function animate(timings, styles = null) {
-  return {
-    type: AnimationMetadataType.Animate,
-    styles,
-    timings
-  };
-}
-function sequence(steps, options = null) {
-  return {
-    type: AnimationMetadataType.Sequence,
-    steps,
-    options
-  };
-}
-function style(tokens) {
-  return {
-    type: AnimationMetadataType.Style,
-    styles: tokens,
-    offset: null
-  };
-}
-function state(name, styles, options) {
-  return {
-    type: AnimationMetadataType.State,
-    name,
-    styles,
-    options
-  };
-}
-function transition(stateChangeExpr, steps, options = null) {
-  return {
-    type: AnimationMetadataType.Transition,
-    expr: stateChangeExpr,
-    animation: steps,
-    options
-  };
-}
-function animateChild(options = null) {
-  return {
-    type: AnimationMetadataType.AnimateChild,
-    options
-  };
-}
-function query(selector, animation, options = null) {
-  return {
-    type: AnimationMetadataType.Query,
-    selector,
-    animation,
-    options
-  };
-}
-var _AnimationBuilder = class _AnimationBuilder {
-};
-_AnimationBuilder.ɵfac = function AnimationBuilder_Factory(t) {
-  return new (t || _AnimationBuilder)();
-};
-_AnimationBuilder.ɵprov = ɵɵdefineInjectable({
-  token: _AnimationBuilder,
-  factory: () => (() => inject(BrowserAnimationBuilder))(),
-  providedIn: "root"
-});
-var AnimationBuilder = _AnimationBuilder;
-(() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(AnimationBuilder, [{
-    type: Injectable,
-    args: [{
-      providedIn: "root",
-      useFactory: () => inject(BrowserAnimationBuilder)
-    }]
-  }], null, null);
-})();
-var AnimationFactory = class {
-};
-var _BrowserAnimationBuilder = class _BrowserAnimationBuilder extends AnimationBuilder {
-  constructor(rootRenderer, doc) {
-    super();
-    this.animationModuleType = inject(ANIMATION_MODULE_TYPE, {
-      optional: true
-    });
-    this._nextAnimationId = 0;
-    const typeData = {
-      id: "0",
-      encapsulation: ViewEncapsulation$1.None,
-      styles: [],
-      data: {
-        animation: []
-      }
-    };
-    this._renderer = rootRenderer.createRenderer(doc.body, typeData);
-    if (this.animationModuleType === null && !isAnimationRenderer(this._renderer)) {
-      throw new RuntimeError(3600, (typeof ngDevMode === "undefined" || ngDevMode) && "Angular detected that the `AnimationBuilder` was injected, but animation support was not enabled. Please make sure that you enable animations in your application by calling `provideAnimations()` or `provideAnimationsAsync()` function.");
-    }
-  }
-  build(animation) {
-    const id = this._nextAnimationId;
-    this._nextAnimationId++;
-    const entry = Array.isArray(animation) ? sequence(animation) : animation;
-    issueAnimationCommand(this._renderer, null, id, "register", [entry]);
-    return new BrowserAnimationFactory(id, this._renderer);
-  }
-};
-_BrowserAnimationBuilder.ɵfac = function BrowserAnimationBuilder_Factory(t) {
-  return new (t || _BrowserAnimationBuilder)(ɵɵinject(RendererFactory2), ɵɵinject(DOCUMENT));
-};
-_BrowserAnimationBuilder.ɵprov = ɵɵdefineInjectable({
-  token: _BrowserAnimationBuilder,
-  factory: _BrowserAnimationBuilder.ɵfac,
-  providedIn: "root"
-});
-var BrowserAnimationBuilder = _BrowserAnimationBuilder;
-(() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(BrowserAnimationBuilder, [{
-    type: Injectable,
-    args: [{
-      providedIn: "root"
-    }]
-  }], () => [{
-    type: RendererFactory2
-  }, {
-    type: Document,
-    decorators: [{
-      type: Inject,
-      args: [DOCUMENT]
-    }]
-  }], null);
-})();
-var BrowserAnimationFactory = class extends AnimationFactory {
-  constructor(_id, _renderer) {
-    super();
-    this._id = _id;
-    this._renderer = _renderer;
-  }
-  create(element, options) {
-    return new RendererAnimationPlayer(this._id, element, options || {}, this._renderer);
-  }
-};
-var RendererAnimationPlayer = class {
-  constructor(id, element, options, _renderer) {
-    this.id = id;
-    this.element = element;
-    this._renderer = _renderer;
-    this.parentPlayer = null;
-    this._started = false;
-    this.totalTime = 0;
-    this._command("create", options);
-  }
-  _listen(eventName, callback) {
-    return this._renderer.listen(this.element, `@@${this.id}:${eventName}`, callback);
-  }
-  _command(command, ...args) {
-    issueAnimationCommand(this._renderer, this.element, this.id, command, args);
-  }
-  onDone(fn) {
-    this._listen("done", fn);
-  }
-  onStart(fn) {
-    this._listen("start", fn);
-  }
-  onDestroy(fn) {
-    this._listen("destroy", fn);
-  }
-  init() {
-    this._command("init");
-  }
-  hasStarted() {
-    return this._started;
-  }
-  play() {
-    this._command("play");
-    this._started = true;
-  }
-  pause() {
-    this._command("pause");
-  }
-  restart() {
-    this._command("restart");
-  }
-  finish() {
-    this._command("finish");
-  }
-  destroy() {
-    this._command("destroy");
-  }
-  reset() {
-    this._command("reset");
-    this._started = false;
-  }
-  setPosition(p) {
-    this._command("setPosition", p);
-  }
-  getPosition() {
-    return unwrapAnimationRenderer(this._renderer)?.engine?.players[this.id]?.getPosition() ?? 0;
-  }
-};
-function issueAnimationCommand(renderer, element, id, command, args) {
-  renderer.setProperty(element, `@@${id}:${command}`, args);
-}
-function unwrapAnimationRenderer(renderer) {
-  const type = renderer.ɵtype;
-  if (type === 0) {
-    return renderer;
-  } else if (type === 1) {
-    return renderer.animationRenderer;
-  }
-  return null;
-}
-function isAnimationRenderer(renderer) {
-  const type = renderer.ɵtype;
-  return type === 0 || type === 1;
-}
-
 // node_modules/@angular/cdk/fesm2022/observers.mjs
 var _MutationObserverFactory = class _MutationObserverFactory {
   create(callback) {
@@ -1132,11 +901,11 @@ var _MediaMatcher = class _MediaMatcher {
    * Confirms the layout engine will trigger for the selector query provided and returns the
    * MediaQueryList for the query provided.
    */
-  matchMedia(query2) {
+  matchMedia(query) {
     if (this._platform.WEBKIT || this._platform.BLINK) {
-      createEmptyStyleRule(query2, this._nonce);
+      createEmptyStyleRule(query, this._nonce);
     }
-    return this._matchMedia(query2);
+    return this._matchMedia(query);
   }
 };
 _MediaMatcher.ɵfac = function MediaMatcher_Factory(t) {
@@ -1166,8 +935,8 @@ var MediaMatcher = _MediaMatcher;
     }]
   }], null);
 })();
-function createEmptyStyleRule(query2, nonce) {
-  if (mediaQueriesForWebkitCompatibility.has(query2)) {
+function createEmptyStyleRule(query, nonce) {
+  if (mediaQueriesForWebkitCompatibility.has(query)) {
     return;
   }
   try {
@@ -1180,17 +949,17 @@ function createEmptyStyleRule(query2, nonce) {
       document.head.appendChild(mediaQueryStyleNode);
     }
     if (mediaQueryStyleNode.sheet) {
-      mediaQueryStyleNode.sheet.insertRule(`@media ${query2} {body{ }}`, 0);
-      mediaQueriesForWebkitCompatibility.add(query2);
+      mediaQueryStyleNode.sheet.insertRule(`@media ${query} {body{ }}`, 0);
+      mediaQueriesForWebkitCompatibility.add(query);
     }
   } catch (e) {
     console.error(e);
   }
 }
-function noopMatchMedia(query2) {
+function noopMatchMedia(query) {
   return {
-    matches: query2 === "all" || query2 === "",
-    media: query2,
+    matches: query === "all" || query === "",
+    media: query,
     addListener: () => {
     },
     removeListener: () => {
@@ -1226,7 +995,7 @@ var _BreakpointObserver = class _BreakpointObserver {
    */
   observe(value) {
     const queries = splitQueries(coerceArray(value));
-    const observables = queries.map((query2) => this._registerQuery(query2).observable);
+    const observables = queries.map((query) => this._registerQuery(query).observable);
     let stateObservable = combineLatest(observables);
     stateObservable = concat(stateObservable.pipe(take(1)), stateObservable.pipe(skip(1), debounceTime(0)));
     return stateObservable.pipe(map((breakpointStates) => {
@@ -1236,20 +1005,20 @@ var _BreakpointObserver = class _BreakpointObserver {
       };
       breakpointStates.forEach(({
         matches,
-        query: query2
+        query
       }) => {
         response.matches = response.matches || matches;
-        response.breakpoints[query2] = matches;
+        response.breakpoints[query] = matches;
       });
       return response;
     }));
   }
   /** Registers a specific query to be listened for. */
-  _registerQuery(query2) {
-    if (this._queries.has(query2)) {
-      return this._queries.get(query2);
+  _registerQuery(query) {
+    if (this._queries.has(query)) {
+      return this._queries.get(query);
     }
-    const mql = this._mediaMatcher.matchMedia(query2);
+    const mql = this._mediaMatcher.matchMedia(query);
     const queryObservable = new Observable((observer) => {
       const handler = (e) => this._zone.run(() => observer.next(e));
       mql.addListener(handler);
@@ -1259,14 +1028,14 @@ var _BreakpointObserver = class _BreakpointObserver {
     }).pipe(startWith(mql), map(({
       matches
     }) => ({
-      query: query2,
+      query,
       matches
     })), takeUntil(this._destroySubject));
     const output = {
       observable: queryObservable,
       mql
     };
-    this._queries.set(query2, output);
+    this._queries.set(query, output);
     return output;
   }
 };
@@ -1292,7 +1061,7 @@ var BreakpointObserver = _BreakpointObserver;
   }], null);
 })();
 function splitQueries(queries) {
-  return queries.map((query2) => query2.split(",")).reduce((a1, a2) => a1.concat(a2)).map((query2) => query2.trim());
+  return queries.map((query) => query.split(",")).reduce((a1, a2) => a1.concat(a2)).map((query) => query.trim());
 }
 
 // node_modules/@angular/cdk/fesm2022/a11y.mjs
@@ -6678,11 +6447,8 @@ var MatFormFieldModule = _MatFormFieldModule;
 })();
 
 export {
-  coerceBooleanProperty,
-  coerceNumberProperty,
-  coerceArray,
-  coerceCssPixelValue,
-  coerceElement,
+  Directionality,
+  BidiModule,
   Platform,
   getSupportedInputTypes,
   normalizePassiveListenerOptions,
@@ -6691,6 +6457,11 @@ export {
   getRtlScrollAxisType,
   _getEventTarget,
   _isTestEnvironment,
+  coerceBooleanProperty,
+  coerceNumberProperty,
+  coerceArray,
+  coerceCssPixelValue,
+  coerceElement,
   ENTER,
   ESCAPE,
   SPACE,
@@ -6704,8 +6475,6 @@ export {
   removeAriaReferencedId,
   ActiveDescendantKeyManager,
   LiveAnnouncer,
-  Directionality,
-  BidiModule,
   MatCommonModule,
   _ErrorStateTracker,
   ErrorStateMatcher,
@@ -6716,13 +6485,6 @@ export {
   _countGroupLabelsBeforeOption,
   _getOptionScrollPosition,
   MatOptionModule,
-  trigger,
-  animate,
-  style,
-  state,
-  transition,
-  animateChild,
-  query,
   MatLabel,
   MAT_ERROR,
   MatError,
@@ -6741,13 +6503,4 @@ export {
   MatFormField,
   MatFormFieldModule
 };
-/*! Bundled license information:
-
-@angular/animations/fesm2022/animations.mjs:
-  (**
-   * @license Angular v17.1.3
-   * (c) 2010-2022 Google LLC. https://angular.io/
-   * License: MIT
-   *)
-*/
-//# sourceMappingURL=chunk-55ZBX2QP.js.map
+//# sourceMappingURL=chunk-WD7KHFGC.js.map

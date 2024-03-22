@@ -1,11 +1,12 @@
-import { Component, Input, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CityComponent } from './city/city.component';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatFormField, MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule} from '@angular/forms';
 import { City } from './city';
 import { CitiesService } from './cities.service';
+
 
 @Component({
   selector: 'app-root',
@@ -20,7 +21,7 @@ import { CitiesService } from './cities.service';
     <section>
       <form>
         <mat-form-field>
-          <select matNativeControl [(ngModel)]="selectedCity" name="city">
+          <select matNativeControl [(ngModel)]="selectedCity" name="city" (change)="citySelected($any($event))">
             <option value="" selected></option>
             @for (city of Cities; track city) {
               <option [value]="city.value">{{city.viewValue}}</option>
@@ -30,7 +31,7 @@ import { CitiesService } from './cities.service';
       </form>
     </section>
     <section class="content">
-        <city [currentValue]="selectedCity"]></city>
+        <city [currentCity]="currentCity"></city>
       </section>
     </main>
   `,
@@ -41,13 +42,18 @@ export class AppComponent {
 
   selectedCity: string;
   Cities: City[] = [];
+  currentCity: City | undefined;
 
   cityService: CitiesService = inject(CitiesService);
 
   constructor() {
     this.selectedCity = "london"
     this.Cities = this.cityService.getAllCities();
+    this.currentCity = this.cityService.getCityByValue(this.selectedCity)
   }
 
-  @Input() cityValue!: string
+  citySelected(event: MatFormField) {
+    this.currentCity = this.cityService.getCityByValue(this.selectedCity)
+  }
+
 }

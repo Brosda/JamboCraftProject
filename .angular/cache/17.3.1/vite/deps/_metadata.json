@@ -1,49 +1,55 @@
 {
-  "hash": "8d583393",
-  "configHash": "e89dfd4e",
+  "hash": "a3134550",
+  "configHash": "620bf650",
   "lockfileHash": "465eb9ac",
-  "browserHash": "65969728",
+  "browserHash": "b9e0820a",
   "optimized": {
     "@angular/common": {
       "src": "../../../../../node_modules/@angular/common/fesm2022/common.mjs",
       "file": "@angular_common.js",
-      "fileHash": "dcb743c1",
+      "fileHash": "4492a9f6",
       "needsInterop": false
     },
     "@angular/core": {
       "src": "../../../../../node_modules/@angular/core/fesm2022/core.mjs",
       "file": "@angular_core.js",
-      "fileHash": "9989cb3c",
+      "fileHash": "affcad15",
       "needsInterop": false
     },
     "@angular/forms": {
       "src": "../../../../../node_modules/@angular/forms/fesm2022/forms.mjs",
       "file": "@angular_forms.js",
-      "fileHash": "35de3baf",
+      "fileHash": "9c81ff5a",
       "needsInterop": false
     },
     "@angular/material/form-field": {
       "src": "../../../../../node_modules/@angular/material/fesm2022/form-field.mjs",
       "file": "@angular_material_form-field.js",
-      "fileHash": "d01f6329",
+      "fileHash": "10bae417",
       "needsInterop": false
     },
     "@angular/material/input": {
       "src": "../../../../../node_modules/@angular/material/fesm2022/input.mjs",
       "file": "@angular_material_input.js",
-      "fileHash": "00424cbf",
+      "fileHash": "8649e939",
       "needsInterop": false
     },
     "@angular/material/select": {
       "src": "../../../../../node_modules/@angular/material/fesm2022/select.mjs",
       "file": "@angular_material_select.js",
-      "fileHash": "6e7ec57b",
+      "fileHash": "381de37d",
       "needsInterop": false
     },
     "@angular/platform-browser": {
       "src": "../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
       "file": "@angular_platform-browser.js",
-      "fileHash": "9830ef3d",
+      "fileHash": "9a97a5e9",
+      "needsInterop": false
+    },
+    "@angular/platform-browser/animations": {
+      "src": "../../../../../node_modules/@angular/platform-browser/fesm2022/animations.mjs",
+      "file": "@angular_platform-browser_animations.js",
+      "fileHash": "1e2b43c8",
       "needsInterop": false
     }
   },
@@ -51,8 +57,14 @@
     "chunk-KRB2HAKG": {
       "file": "chunk-KRB2HAKG.js"
     },
-    "chunk-55ZBX2QP": {
-      "file": "chunk-55ZBX2QP.js"
+    "chunk-WD7KHFGC": {
+      "file": "chunk-WD7KHFGC.js"
+    },
+    "chunk-ONEXM5KX": {
+      "file": "chunk-ONEXM5KX.js"
+    },
+    "chunk-NTQ2BXZT": {
+      "file": "chunk-NTQ2BXZT.js"
     },
     "chunk-RGFNJ6UJ": {
       "file": "chunk-RGFNJ6UJ.js"

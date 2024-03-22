@@ -23,7 +23,8 @@ import {
   coerceNumberProperty,
   getSupportedInputTypes,
   normalizePassiveListenerOptions
-} from "./chunk-55ZBX2QP.js";
+} from "./chunk-WD7KHFGC.js";
+import "./chunk-ONEXM5KX.js";
 import {
   DOCUMENT
 } from "./chunk-RGFNJ6UJ.js";
