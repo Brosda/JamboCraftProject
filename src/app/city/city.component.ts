@@ -1,10 +1,13 @@
 import { Component, Input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WeatherDataComponent } from '../weather-data/weather-data.component';
-import { CitiesService } from '../cities.service';
 import { City } from '../city';
 
-
+// City is the componenet that displays a chosen cities details.
+// Is the child of the main app.
+// Is the parent of weather data.
+// Inputs:
+//  currentCity city
 @Component({
   selector: 'city',
   standalone: true,
@@ -19,7 +22,7 @@ import { City } from '../city';
       <p class="details-description">{{ currentCity?.details}}</p>
     </section>
     <section class="weather">
-      <city-weather></city-weather>
+      <city-weather [currentCity]="currentCity"></city-weather>
     </section>
   `,
   styleUrls: ['./city.component.css'],
