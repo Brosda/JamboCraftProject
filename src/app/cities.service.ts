@@ -9,37 +9,19 @@ import { City } from './city'
 export class CitiesService {
 
   constructor() { }
-
-  cityList: City[] = [
-    {
-      value: "london",
-      viewValue: "London",
-      details: "London is a city in England. It has a population of 8.982 million people.",
-      currentTemp: "15 Celcius",
-      currentWeekWeather: "Monday: 10, Tuesday: 12, Wedneday: 17"
-    },
-    {
-      value: "newyork",
-      viewValue: "New York",
-      details: "New York is a city in the USA. It has a population of 8.468 million people.",
-      currentTemp: "25 Celcius",
-      currentWeekWeather: "Monday: 10, Tuesday: 12, Wedneday: 17"
-    },
-    {
-      value: "edmonton",
-      viewValue: "Edmonton",
-      details: "Edmonton is a city in Canada. It has a population of 981,280 people",
-      currentTemp: "-13 Celcius",
-      currentWeekWeather: "Monday: 10, Tuesday: 12, Wedneday: 17"
-    }
-
-  ];
-
-  getAllCities(): City[] {
-    return this.cityList;
+ 
+  async getAllCities(): Promise<City[]> {
+    const url = 'http://localhost:4000/all'; 
+    const data = await fetch(url)
+    console.log(data)
+    return await data.json() ?? [];
   }
 
-  getCityByValue(value: string): City | undefined {
-    return this.cityList.find(housingLocation => housingLocation.value === value);
+  async getCityByValue(value: string): Promise<City | undefined> {
+    const url = 'http://localhost:4000/city'; 
+    const data = await fetch(`${url}?id=${value}`);
+    console.log(data)
+    return await data.json() ?? {};
+
   }
 }

@@ -8,8 +8,8 @@ import { City } from './city';
 import { CitiesService } from './cities.service';
 
 // app-root is the main root of the Trip Planner web application.
-// This is the highest level parent component and should not be the child of any other componenets.
-// It contains the title for the site, and a drop down menu to slect the city.
+// This is the highest level parent component and should not be the child of any other components.
+// It contains the title for the site, and a drop down menu to select the city.
 // The cities are retrieved on startup.
 // The current city updates as the user selects cities from the dropdown.
 // Is the parent of city component
@@ -30,7 +30,7 @@ import { CitiesService } from './cities.service';
           <select matNativeControl [(ngModel)]="selectedCity" name="city" (change)="citySelected($any($event))">
             <option value="" selected></option>
             @for (city of Cities; track city) {
-              <option [value]="city.value">{{city.viewValue}}</option>
+              <option [value]="city.value">{{city.view_value}}</option>
             }
           </select>
         </mat-form-field>
@@ -55,13 +55,19 @@ export class AppComponent {
 
   constructor() {
     this.selectedCity = "london" // default to london.
-    this.Cities = this.cityService.getAllCities(); // Get all the avaiable cities.
-    this.currentCity = this.cityService.getCityByValue(this.selectedCity) // Get the details of the selected city.
+    this.cityService.getAllCities().then((cities:City[]) => { // Get all the available cities.
+      this.Cities = cities;
+    }); 
+    this.cityService.getCityByValue(this.selectedCity).then((city) => { // Get the details of the selected city.
+      this.currentCity = city
+    }) 
   }
 
   // This method updates the current city whenever a new city is selected.
   citySelected(event: MatFormField) {
-    this.currentCity = this.cityService.getCityByValue(this.selectedCity)
+    this.cityService.getCityByValue(this.selectedCity).then((city) => { // Get the details of the selected city.
+      this.currentCity = city
+    }) 
   }
 
 }

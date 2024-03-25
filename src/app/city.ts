@@ -1,8 +1,8 @@
 // City contains all the information for a city.
 export interface City {
   value: string;
-  viewValue: string;
+  view_value: string;
   details: string;
-  currentTemp: string;
-  currentWeekWeather: string;
+  current_temp: string;
+  current_week_weather: string;
 }

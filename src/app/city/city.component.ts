@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { WeatherDataComponent } from '../weather-data/weather-data.component';
 import { City } from '../city';
 
-// City is the componenet that displays a chosen cities details.
+// City is the component that displays a chosen cities details.
 // Is the child of the main app.
 // Is the parent of weather data.
 // Inputs:
@@ -18,7 +18,7 @@ import { City } from '../city';
   template: `
 
     <section class="details">
-      <h2 class="details-heading">{{ currentCity?.viewValue }}</h2>
+      <h2 class="details-heading">{{ currentCity?.view_value }}</h2>
       <p class="details-description">{{ currentCity?.details}}</p>
     </section>
     <section class="weather">
