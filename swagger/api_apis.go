@@ -275,8 +275,6 @@ func (a *APIsApiService) ForecastWeather(ctx context.Context, q string, days int
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	print("LocalVarBod::: ")
-	println(string(localVarBody))
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
 		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))

@@ -1,5 +1,6 @@
 package rest
 
+// CityResponse is the response object for of a city and its details.
 type CityResponse struct {
 	Value              string `json:"value"`
 	ViewValue          string `json:"view_value"`

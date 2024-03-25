@@ -1,7 +1,6 @@
 package city
 
-import "JamboCraftProject/swagger"
-
+// The basic city struct.
 type City struct {
 	Value              string
 	ViewValue          string
@@ -10,6 +9,7 @@ type City struct {
 	CurrentWeekWeather string
 }
 
+// TODO move this to a database.
 var cityList = []City{
 	{
 		Value:              "london",
@@ -32,10 +32,4 @@ var cityList = []City{
 		CurrentTemp:        "",
 		CurrentWeekWeather: "",
 	},
-}
-
-type ForecastResponse struct {
-	Location swagger.Location `json:"location,omitempty"`
-	Current  swagger.Current  `json:"current,omitempty"`
-	Forecast swagger.Forecast `json:"forecast,omitempty"`
 }

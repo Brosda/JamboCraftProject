@@ -1,3 +1,4 @@
+// Package rest is in charge of serving and handling all the rest endpoints for this service.
 package rest
 
 import (
@@ -14,6 +15,8 @@ type restController struct {
 	mux           *http.ServeMux
 }
 
+// New creates a new restController.
+// This controller starts the server and listens on the rest endpoints below.
 func New(cityController city.CityController) {
 	mux := http.NewServeMux()
 
@@ -35,6 +38,7 @@ func New(cityController city.CityController) {
 	}
 }
 
+// getAll gets a list of all the cities and their basic information.
 func (c *restController) getAll(w http.ResponseWriter, r *http.Request) {
 	enableCors(&w)
 	//ctx := r.Context()
@@ -49,6 +53,8 @@ func (c *restController) getAll(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(response)
 }
 
+// getCity get the details of the requested city.
+// defaults to "london" if no id provided.
 func (c *restController) getCity(w http.ResponseWriter, r *http.Request) {
 	enableCors(&w)
 	var id string

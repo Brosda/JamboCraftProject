@@ -6,6 +6,7 @@ import (
 	"JamboCraftProject/swagger"
 )
 
+// main starts all the needed controllers in the correct order.
 func main() {
 	config := swagger.NewConfiguration()
 	weatherApi := swagger.NewAPIClient(config)
